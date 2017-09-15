@@ -1,0 +1,66 @@
+coinList = [200,100,50,20,10,5,2,1]
+valList = []
+for coin in coinList:
+	valList.append(0)
+valList[0] = 1
+n = coinList[0]
+a = -1
+
+f = open('data.txt','w')
+
+def findCombs(valList,coinList,a,n,numCombs):
+	f.write(str(valList)+"\n")
+	# building with 20 case in mind
+	# valList starts as [1 0 0 0 0]
+	# subtract from the first nonzero column that wasn't the same column as before
+		# UNLESS the first nonzero column is in the len(valList)-1 (2s) place
+	i = 0
+	if a == len(valList) - 2 and valList[-2] != 0:
+		a -= 1
+	for val in valList:
+		if val != 0 and i > a:
+			valList[i] -= 1
+			valRecount = findRemain(n,valList,coinList) 
+			a = i
+			break
+		if i == len(valList) - 1:
+			return numCombs
+		i += 1
+	if numCombs == 993:
+		return numCombs
+	# add as much as you can into the next slot available
+	i += 1 # move to next index
+	print(valList,' have to assign ',valRecount)
+	while valRecount != 0:
+		valRemain = valRecount % coinList[i] # see how much won't fit into the next one
+		valList[i] += valRecount//coinList[i]
+		valRecount -= valList[i]*coinList[i]
+		valRecount = valRemain
+		i += 1 # move to the next index
+	numCombs += 1
+	print('after reassigning, valList is ',valList)
+	print('a is ,',a)
+	if valList[-2] == 0 and a == len(valList) - 2:
+		valList[-1] = 0
+		while valList[a] == 0:
+			a -= 1
+			if a < 0:
+				break
+		a -= 1
+		print('i changed a! a is now ',a)
+	return findCombs(valList,coinList,a,n,numCombs)
+
+def findRemain(n,valList,coinList):
+	total = 0
+	i = 0
+	for val in valList:
+		total += val*coinList[i]
+		i += 1
+	return n-total
+
+# the above code doesn't work, hits stack overflow rip 
+
+f.write(str(findCombs(valList,coinList,a,n,0)))
+
+f.close()
+	

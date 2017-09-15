@@ -1,0 +1,19 @@
+# find the fibo with len(1000)
+
+# first couple numbers of fib sequence
+	# 1 1 2 3 5 8 13 21 ...
+
+def fibo(n):
+	# fibo call with list
+	# give it list to begin with 
+	if len(n) >= 2:
+		n.append(n[len(n)-2]+n[len(n)-1])
+	else:
+		n.append(1)
+	return n
+
+n = [1,1]
+while len(str(n[-1])) < 1000:
+	n = fibo(n)
+print(len(n)-1) # refers to the index
+

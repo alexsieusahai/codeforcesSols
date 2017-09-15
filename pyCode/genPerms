@@ -1,0 +1,13 @@
+def genPerms(myList):
+	# uses recursion
+	if len(myList) > 1:
+		for item in myList:
+			print('item this run is ',item)
+			return item+genPerms(myList[1:len(myList)])
+	return str(myList)
+	#has exponential cost
+
+# test case here
+myList = list('201')
+print(genPerms(myList))
+

@@ -1,0 +1,24 @@
+coinList = [200,100,50,20,10,5,2,1]
+valList = []
+i = 0
+while i < len(coinList):
+	valList[i] = 0
+valList[0] = 1
+
+numCombs = 1
+a = 0
+
+while a != len(valList) - 1:
+	print(valList)
+	valLeft = coinList[i]*valList[i]
+	valList[i] -= 1
+	i += 1
+	while valLeft > 0:
+		while valList[i] == 0:
+			i += 1
+		valList[i]=valLeft%coinList[i]
+		valLeft -= valList[i]*coinList[i]
+		i += 1
+	a += 1
+	if
+	i = a+1

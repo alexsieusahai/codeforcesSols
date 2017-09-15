@@ -1,0 +1,31 @@
+# have to remove the wubs
+songStr = input()
+checkStr = 'WUB'
+i = 0
+possWord = []
+wordList = []
+checkWord = []
+for char in songStr:
+	if char == checkStr[i]:
+		checkWord.append(checkStr[i])
+		i += 1
+	else:
+		if char == 'W':
+			checkWord = ['W']
+			i = 1
+		else:	
+			checkWord = []
+			i = 0
+	possWord.append(char)
+	if checkWord == list(checkStr):
+		if possWord != checkStr:
+			wordList.append(possWord[:len(possWord)-3])
+		possWord = []	
+		checkWord = []
+		i = 0
+wordList.append(possWord)
+words = []
+for wordPieces in wordList:
+	if wordPieces != []:
+		words.append(''.join(wordPieces))
+print(' '.join(words))

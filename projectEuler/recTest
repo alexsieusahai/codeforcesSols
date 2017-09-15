@@ -1,0 +1,11 @@
+import copy
+
+def test(numList,multList):
+	for num in numList:	
+		numList1 = copy.deepcopy(numList)
+		numList1.remove(num)
+		multList.append(num)
+		test(numList1,multList)
+	return multList	
+
+print(test([1,2,3],[]))

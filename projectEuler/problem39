@@ -1,0 +1,13 @@
+pMax = [0,0]
+for p in range(2,1001,2):
+    intDict = {}
+    for a in range(1,p+1):
+        b = (p**2+2*a*p)/(2*a+2*p)
+        if b/int(b) == 1:
+            intDict[b]=True
+   count = 0
+   for i in intDict:
+       count += 1
+    if pMax[1] < count:
+        pMax = [p,count]
+    print(pMax)

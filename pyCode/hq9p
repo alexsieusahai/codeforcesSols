@@ -1,0 +1,9 @@
+def hq9p(myStr):
+	myList = list(myStr)
+	instruct = ['H','Q','9']
+	for char in myList:
+		if char in instruct:
+			return 'YES'
+	return 'NO'
+
+print(hq9p(input()))

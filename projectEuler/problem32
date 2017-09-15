@@ -1,0 +1,72 @@
+# try brute force
+
+# xx * xxx = xxxx
+# start with a list filled with 1 to 9
+# try 12 * 345 = ..., then run through the chars on answer and pull from list until you can't
+# if you reach an empty list, then pandigital
+# if you cannot, skip, move onto next one, and try again
+
+
+# begin with generating all combinations
+
+# first start by finding the pattern
+# make a selection for the first digit, then make a selection for the next in all
+# solve via recursion
+
+import copy
+
+def findCombs(products, numList, multList):
+	
+	# multList holds the multiplicands in the order [x,x,y,y,y] for xx*yyy
+	# products holds the correct products in a list
+	# numList is used to satisfy pandigital requirement
+	
+	# leaving the bottom alone, multList would be built with 9 letters but we want to stop at 5
+	# therefore we need our out here:
+	
+	if len(multList) > 2 and len(multList) < 7:
+		# need to generate productList by taking all combinations of mults from 
+		# multList using a function
+		# below function not defined yet
+		productList = genProd(multList)
+		for product in productList:
+			numList1 = copy.deepcopy(numList)
+			for num in str(product):
+				if num in numList1:
+					numList1.remove(num)
+				else:
+					product = 0
+					break
+			if len(numList1) == 0 and product not in products:
+				products.append(product)
+				print(product)
+				print(numList)
+
+	for num in numList: #feed it 1:9 to begin with on first run
+		if len(multList) < 10:
+			numList1 = copy.deepcopy(numList)
+			multList1 = copy.deepcopy(multList)
+			numList1.remove(num)
+			multList1.append(num)
+			findCombs(products,numList1,multList1)
+	return sum(products)
+
+def genProd(multList):
+	productList = []
+	numDigits1 = 1
+	while numDigits1 <= len(multList)-1:
+		num1 = ''
+		num2 = ''
+		for num in range(1,len(multList)+1):
+			if num <= numDigits1:
+				num1 += multList[num-1]
+			else:
+				num2 += multList[num-1]
+		productList.append(int(num1)*int(num2))
+		numDigits1 += 1	
+	return productList
+
+
+numList = [str(x) for x in '123456789']
+print(findCombs([], numList, []))
+

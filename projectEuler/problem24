@@ -1,0 +1,55 @@
+# using the implementation I dreamed up, lets see if it works
+
+
+# building the sorting algorithm here
+def sort(n):
+	n = [int(x) for x in list(n)]
+	#sel sort
+	min = n[0]
+	for num in n:
+		if num < min:
+			min = num
+	# have to swap the two pieces now
+	placeholder = min
+	indexMin = n.index(min)
+	n[indexMin] = n[0]	
+	if len(n) > 1:
+		return str(placeholder) + sort(n[1:])
+	else:
+		return str(placeholder)
+
+#tested sort for 1 case
+
+# building remove(n,b) here			
+def remove(n,b):
+	charList = list(n)
+	if b in charList:
+		charList.remove(b)
+	return ''.join(charList)
+
+# remove tested with 2 cases
+
+# the heart and soul below
+import math
+def lexi(n,i):
+	n = list(n)
+	print(n)
+	s = 0
+	a = 0
+	inc = math.factorial(len(n)-1)
+	print('i this run is ',i)
+	if len(n) > 1:
+		while s < math.factorial(len(n)):
+			if i <= s + inc and i > s:
+				save = n[a]
+				n = remove(n,save)
+				i -= s
+				return str(save) + lexi(n,i)
+			s += inc
+			a += 1
+	else:
+		return ''.join(n)
+	print('ERROR! FAILED ON ',i)
+
+print(lexi(sort('0123456789'),1000000))
+

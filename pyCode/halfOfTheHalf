@@ -1,0 +1,9 @@
+numCases = int(input())
+strList = []
+for case in range(numCases):
+	strList.append(input())
+for aStr in strList:
+	for i in range(len(aStr)//2):
+		if i%2==0:
+			print('{}'.format(aStr[i]),end='')
+	print()

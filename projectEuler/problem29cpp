@@ -1,0 +1,11 @@
+# cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+main()
+{
+	std::vector<int> numVec;
+	for ( a = 2; a < 101; 1) {
+		for ( b = 2; b < 101; 1) {
+			if 

@@ -1,0 +1,10 @@
+
+for case in range(int(input('enter case amount'))):
+	print('enter list of temps')
+	tempList = [float(x) for x in input().split()]
+	print('enter list of rateC')
+	rateCList = [float(x) for x in input().split()]
+	A = 0
+	for i in range(len(tempList)):
+		A += rateCList[i]/(2.73**(207*1000/(8.314*tempList[i])))
+	print(A/len(tempList))

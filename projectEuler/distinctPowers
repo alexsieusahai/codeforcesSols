@@ -1,0 +1,28 @@
+
+# alright keep in mind that the first one that cannot be expressed as a power of another covers 99  terms, from x**2 to x**100. Then the square covers from x**4 to x**200. Hence, 50 terms are already accounted for, therefore the square produces 50 new unique terms. 
+
+# the cube covers from x**6 to x**300, but x**200 is now covered. Hence, only 33 terms (from x**203 to x**300) are generated. 
+
+# the fourth power covers from x**8 to x**400, but x**300 is now covered. Hence, only 25 terms (from x**304 to x**400) are covered.
+
+# similarly, the fifth power covers from x**10 to x**500, hence only 20 terms are covered. You keep incrementing the power until x**(a+1) is greater than 100, since you don't want that last case.
+
+numTerms = 0
+factorDict = {} 
+for i in range(2,101):
+	factorDict[i] = True
+while a <= 100:
+	if factorDict[a]:
+		pwr = 1
+		upperlim = 100
+		lowerlim = 2
+		while pwr < 100:
+			numTerms += (upperlim-lowerlim)//pwr+1
+			factorDict[a**pwr] = False
+			pwr += 1
+			lowerlim = upperlim+pwr
+			upperlim = 100*pwr
+	print(factorDict)
+	a += 1
+			
+

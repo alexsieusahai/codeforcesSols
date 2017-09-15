@@ -1,0 +1,23 @@
+a = 0
+b = 0
+c = 0
+for char in input():
+	if char == '0':
+		if b == 0:
+			a += 1
+		else:
+			b = 0
+			a = 1
+	else:
+		if a == 0:
+			b += 1
+		else:
+			a = 0
+			b = 1
+	if a == 7 or b == 7:
+		print('YES')
+		c = 1
+		break
+if c == 0:
+	print('NO')
+ 	

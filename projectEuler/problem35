@@ -1,0 +1,29 @@
+
+# have to get a list of all the primes below 1 000 000
+
+# using SoE
+
+def soe(n): # where n is the upper bound
+	numDict = {1:True,2:True}
+	primeList = [1,2]
+	for i in range(3,n,2):
+		if i not in numDict:
+			numDict[i] = True
+			primeList.append(i)
+			a = i
+			while i+a < n:
+				i += a
+				numDict[i] = False
+	return numDict
+
+primeDict = soe(1000000)
+for prime in primeList:
+	possPrimeList = cyclic(prime)
+	i = 0
+	for possPrime in possPrimeList:
+		if primeDict[possPrime] = True:
+			i += 1
+	if i == len(possPrimeList):
+		numCirc += q
+	
+		# have to make cyclic(prime)

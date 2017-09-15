@@ -1,0 +1,12 @@
+
+def boyOrGirl(s):
+	charsFound = []
+	for char in s:
+		if char not in charsFound:
+			charsFound.append(char)
+	if len(charsFound) % 2 == 0:
+		return 'CHAT WITH HER!'
+	else:
+		return 'IGNORE HIM!'
+
+print(boyOrGirl(input()))

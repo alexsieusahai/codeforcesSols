@@ -1,0 +1,70 @@
+# non abundant sums 
+# prime sieve below
+def quickSieve(n):
+	# give it n, return list of primes
+	i = 2
+	primeDict = {}
+	while i < n:
+		a = 1
+		while n % i == 0:
+			primeDict[i] = a
+			n /= i
+			a += 1
+		i += 1
+	if n != 1:
+		primeDict[int(n)] = 1
+	return primeDict
+
+# i now have a list of primes and their respective fit counts 
+# now i have to take the total combinations
+#
+
+def getCombs(primeDict,primeList,i,divisors,a):
+# returns all combs of p1^n1 * p2*n2 ... pi^ni for all the respective ranges of what's available
+	prime = 0
+	if i == len(primeList):
+		divisors.append(a)
+	else:
+		prime = primeList[i]
+	if prime != 0:
+		for exp in range(primeDict[prime]+1):
+			getCombs(primeDict,primeList,i+1,divisors,a*(prime**exp))
+	b = 1
+	for prime in primeDict:
+		b *= primeDict[prime]+1
+	if b == len(divisors):
+		return divisors
+	# start with divisors = [], a = 1, i = 0
+
+# it works!
+
+def getAbundant(n):
+	# returns all abundant numbers below and including n
+	abundantList = []
+	# in this case we only want the numbers below int(n/2)-1 since the
+	# biggest abundant would be half of that number -1
+	for c in range(1,n+1):
+		primeDict = quickSieve(c)
+		primeList = []
+		for prime in primeDict:
+			primeList.append(prime)	
+		divisors = getCombs(primeDict,primeList,0,[],1)
+		print(divisors)
+		if sum(divisors)-c > c:
+			abundantList.append(c)
+	return abundantList
+
+# bound is 28123
+#
+abundantList = getAbundant(28123)
+totDict = {}
+for n in range(28123+1):
+	totDict[n] = 0
+for num in abundantList:
+	for num1 in abundantList:
+		totDict[num+num1] = 1
+mySum = 0
+for n in totDict:
+	if totDict[n] == 0:
+		mySum += n
+print(mySum)

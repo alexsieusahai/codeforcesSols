@@ -1,0 +1,11 @@
+
+def spiralSum(a):
+	if a > 1:
+		sum = 4*a**2 -6*a+6 
+		print(a)
+		print(sum)
+		a -= 2
+		return sum + spiralSum(a)
+	return 1
+
+print(spiralSum(1001))

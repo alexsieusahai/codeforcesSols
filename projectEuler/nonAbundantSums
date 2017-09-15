@@ -1,0 +1,43 @@
+
+# need to build a list of the divisors of the number using the primes 
+# then, use that primeList to build possible factor list, or use an alternate algorithm altogether
+# iterate through 1 to 28123, add to sum if the number is abundant
+# coencenate factors(x) and abundant(x) together since there's no reason to be apart
+#
+# all I need now is an algorithm for generating all factors of the number as efficiently as possible
+# lets try using the bread and butter algorithm and see if it's fast enough
+#
+
+def abundantCheck(n):
+	# returns bool depending on if the number if abundant or not
+	primeList = []
+	primeDict = {}
+	for i in range(2,n+1):
+		if n % i == 0:
+			primeList.append(i)		
+		while n % i == 0:
+			n /= i
+	for prime in primeList:
+		a = prime
+		primeDict[prime] = 0
+		while n%prime == 0:
+			primeDict[prime] += 1
+			prime *= a
+	i = 0
+	return sumFactors(n,primeList,primeDict,i)
+	# pFactorization created
+	# shallow checked with 252
+	# use combinatorics to find all possible combinations
+	
+def sumFactors(n, primeList, primeDict,i):
+	a = primeList[i]
+	print('a is ',a)
+	i += 1
+	if i == len(primeList):
+		return n
+	for b in range(primeDict[a] + 1):
+		print(a/n**b)
+		return sumFactors(int(a/n**b),primeList,primeDict,i)
+
+print(abundantCheck(28))
+

@@ -1,0 +1,26 @@
+import math
+def findCycles(n):
+	# 1,8 => 10,8 => 2,8 => 20,8 => 4,8 => 40,8 => done
+	# 1,3 => 10,3 => 1,3 => 10,3 => 10 in list, return len(divList)-divList.index(10)
+	i = 1
+	divList = []
+	while i!=0:
+		if i > n:
+			if i in divList:
+				return len(divList)-divList.index(i)
+			divList.append(i)
+			i -= n*(i//n)
+		i *= 10
+	return 0
+
+# now for the heart and soul
+
+bigNum = 0
+foundNum = 0
+for n in range(1,1000):
+	testNum = findCycles(n)
+	if testNum > bigNum:
+		bigNum = testNum
+		foundNum = n
+print(foundNum)
+

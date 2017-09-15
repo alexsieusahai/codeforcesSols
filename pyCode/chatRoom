@@ -1,0 +1,16 @@
+
+# remember I have to account for the order
+# what I have to do is cull everything other than the letters wanted, then go through list using a checker list
+
+def chatRoom(s):
+	checkerList = list('hello')
+	for char in s:
+		if char == checkerList[0]:
+			checkerList.remove(checkerList[0])
+		if len(checkerList) == 0:
+			break
+	if len(checkerList) > 0:
+		return 'NO'
+	return 'YES'
+
+print(chatRoom(input()))

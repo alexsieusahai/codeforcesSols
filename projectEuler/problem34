@@ -1,0 +1,25 @@
+# as long as it's less than 5 digits it's fine to calculate
+
+def find(goodList,num):
+	mySum = 0
+	while num <= 999999:
+		print(num)
+		for n in list(str(num)):
+			mySum += factorial(int(n))
+		if mySum == num:
+			goodList.append(num)
+		num += 1
+		mySum = 0
+	return sum(goodList)
+
+def factorial(n):
+	prod = 1
+	if n == 0 or n == 1:
+		return prod
+	while n > 1:
+		prod *= n
+		n -= 1
+	return prod
+
+print(find([],3))
+		

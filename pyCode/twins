@@ -1,0 +1,39 @@
+# plan:
+	# take all of the coin values, organize from largest to smallest
+	# take the sum, store that as a var
+	# set coinCount to 0
+	# take the highest value coin, decrement remaining coin total value, increment coinCount
+	# keep doing it until your coin value is greater than his, incrementing coinCount each run
+	# return coinCount
+
+def twins(coinList):
+	coinDict = {}
+	bigNum = 0
+	myCoinSum = 0
+	coinSum = 0
+	coinCount = 0
+	for coin in coinList:
+		if coin not in coinDict:
+			coinDict[coin] = 0
+		coinDict[coin] += 1
+		coinSum += coin	
+		if coin > bigNum:
+			bigNum = coin
+	while bigNum > 0:
+		coinDict[bigNum] -= 1
+		coinCount += 1
+		coinSum -= bigNum
+		myCoinSum += bigNum
+		if coinDict[bigNum] == 0:
+			bigNum -= 1
+			while bigNum not in coinDict:
+				if bigNum == 0:
+					return coinCount
+				bigNum -= 1		
+		if myCoinSum > coinSum:
+			return coinCount
+		
+
+numCoins = input()
+coinList = [int(x) for x in input().split()]
+print(twins(coinList))

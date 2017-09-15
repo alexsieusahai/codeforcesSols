@@ -1,0 +1,9 @@
+[n,m] = [int(x) for x in input().split()]
+workList = [int(x) for x in input().split()]
+timesAround = 0
+i = 0
+while i < len(workList)-1:
+	if workList[i] > workList[i+1]:
+		timesAround += 1
+	i += 1
+print(timesAround*n + workList[-1]-1)

@@ -1,0 +1,36 @@
+# what we know: n^2 + n + 41 produces 40 primes, n in [0,39], int
+# find this in general for n^2 + an + b, where a < 1000 and b <= 1000
+# another example given is n^2 - 79n + 1601 produces 80 primes, n in [0,79]
+
+# note that 41 is a prime, and 1601 is prime aswell
+# the coffecients are not prime, as 1 is not in set of primes, but 79 is prime so maybe true?
+
+# a little bit of algebraic manipulating
+# n(n+a)+b = p, p is a prime number
+# lets do a little bit of experimentation
+
+def pmGen(n):
+	# generates primes all the way up to n
+	numDict = {}
+	for i in range(2,n+1):
+		numDict[i] = True
+	for i in numDict:
+		if numDict[i]:
+			a = i
+			i += a
+			while i < n:
+				numDict[i] = False
+				i += a
+	numList = []
+	for i in numDict:
+		if numDict[i]:
+			numList.append(i)
+	return numList
+
+# lets explore the one example given and try to figure it out
+
+for n in range(0,80):
+	n = n**2-79*n+1601
+	primeList = pmGen(n)
+	print(primeList)
+	print(len(primeList))

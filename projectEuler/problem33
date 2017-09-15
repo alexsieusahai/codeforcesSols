@@ -1,0 +1,50 @@
+# exactly 4 non-trivial digit cancelling fractions
+# 49/98 => 4/8 by removing 9 from the top and the bottom, ends up still being right
+# there are exactly 4 of these that are less than 1, containing 2 digits in num and denom
+
+#brute force method below
+
+def find(fracList,num,denom):
+	while num <= 98:
+		while denom <= 99:
+			denom += 1
+			if isDigitCancelling(num,denom):
+				fracList.append([num,denom])
+		num += 1
+		denom = num 
+	print(fracList)
+	prodNum = 1
+	prodDenom = 1
+	for item in fracList:
+		prodNum *= item[0]
+		prodDenom *= item[1]
+	divisor = gcd(prodNum,prodDenom)
+	return prodDenom/divisor
+
+def isDigitCancelling(num,denom):
+	for n in list(str(num)): 
+		if n != '0':
+			if n in list(str(denom)):
+				ans = num/denom
+				numList = list(str(num))
+				denomList = list(str(denom))
+				numList.remove(n)
+				denomList.remove(n)
+				print(denomList)
+				if '0' not in denomList:
+					if int(''.join(numList)) / int(''.join(denomList)) == ans:
+						return True
+	return False
+
+def gcd(a,b):
+	if b > a:
+		temp = b
+		b = a
+		a = temp
+	if a != 0 and b != 0:
+		return gcd(b,a%b)
+	if a == 0:
+		return b
+	if b == 0:
+		return a
+print(find([],10,10))
