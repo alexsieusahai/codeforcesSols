@@ -12,6 +12,37 @@ void setup()	{
 	Serial3.begin(9600);
 }
 
+int getPubKey() {
+    int pubKeyB[100] = {}; 
+    int i = 0;
+        while (true)	{	//10 is ascii for newline
+            while (Serial.available() == 0)	{ } 
+            pubKeyB[i] = Serial.read(); //reading the ascii value of the numbers
+            if (pubKeyB[i] == 13)	{
+                break;
+            }
+            //implement check for any alphabetical character
+            pubKeyB[i] -= 48; //since ascii increments [0,9] by 48
+            Serial.print(pubKeyB[i]);
+            i++;
+        }
+        Serial.println();
+        // now build the integer using the array
+        // since decimal, radix is 10
+        i -= 1; //to avoid the space in array that's occupied by the newline escape
+        int radix = 10;
+        double B = 0;
+        int j = 0;
+        while (i >= 0)	{
+            B += pubKeyB[i]*pow(radix,j);
+            i--;
+            j++;
+        }
+        Serial.print("You entered the key ");
+        Serial.println(B);
+}
+
+
 void sender()	{
 	// create your unsigned 16-bt random private key a
 	long unsigned int a = analogRead(1); // assume not connected to anything
@@ -28,42 +59,53 @@ void sender()	{
 
 	// step4
 	Serial.println("Please enter the other public key.");
-	int pubKeyB[100] = {}; //assuming public key B isn't more than 100 characters
-	// PROBLEM:
-	// pow(6,a) is causing overflow; what to do about it?
 
-	// below code is for getting the other public key
 
-	int i = 0;
-	while (true)	{	//10 is ascii for newline
-		while (Serial.available() == 0)	{ } 
-		pubKeyB[i] = Serial.read(); //reading the ascii value of the numbers
-		if (pubKeyB[i] == 13)	{
-			break;
-		}
-		pubKeyB[i] -= 48; //since ascii increments [0,9] by 48
-		Serial.print(pubKeyB[i]);
-		i++;
-		// NOTE:
-		// making the assumption that no alphabetical characters are added
-		// eventually implement below as a function then redo the fcn if pubKeyB is empty
-	}
-	Serial.println();
-	// now build the integer using the array
-	// since decimal, radix is 10
-	i -= 1; //to avoid the space in array that's occupied by the newline escape
-	int radix = 10;
-	double B = 0;
-	int j = 0;
-	while (i >= 0)	{
-		B += pubKeyB[i]*pow(radix,j);
-		i--;
-		j++;
-	}
-	Serial.print("You entered the key ");
-	Serial.println(B);
+    //NOTE: ATTEMPTING TO REPLACE BELOW CODE WITH GETPUBKEY() 
+   
+   
+	//// PROBLEM:
+	//// pow(6,a) is causing overflow; what to do about it?
+
+	//// below code is for getting the other public key
+
+	//int pubKeyB[100] = {}; //assuming public key B isn't more than 100 characters
+	//int i = 0;
+	//while (true)	{	//10 is ascii for newline
+	//	while (Serial.available() == 0)	{ } 
+	//	pubKeyB[i] = Serial.read(); //reading the ascii value of the numbers
+	//	if (pubKeyB[i] == 13)	{
+	//		break;
+	//	}
+	//	pubKeyB[i] -= 48; //since ascii increments [0,9] by 48
+	//	Serial.print(pubKeyB[i]);
+	//	i++;
+	//	// NOTE:
+	//	// making the assumption that no alphabetical characters are added
+	//	// eventually implement below as a function then redo the fcn if pubKeyB is empty
+	//}
+	//Serial.println();
+	//// now build the integer using the array
+	//// since decimal, radix is 10
+	//i -= 1; //to avoid the space in array that's occupied by the newline escape
+	//int radix = 10;
+	//double B = 0;
+	//int j = 0;
+	//while (i >= 0)	{
+	//	B += pubKeyB[i]*pow(radix,j);
+	//	i--;
+	//	j++;
+	//}
+	//Serial.print("You entered the key ");
+	//Serial.println(B);
 	// Prompt the user here to ask if it's correct or not
 	// If it isn't correct then rerun the function
+    //
+    int B = 0;
+    while (B == 0)  {
+        B = getPubKey();
+    }
+    
 	
 	// now, compute k = B^a mod p
 	//double k = pow(B,a);
@@ -74,19 +116,17 @@ void sender()	{
 		
 	while (true)	{
 		while (Serial.available() == 0)	{ }
-		int byteread = Serial.read();
+		int byteRead = Serial.read();
 
-		// decryption occurs here!
-		// !!!!
 
-		if (byteread == 13)	{
+		if (byteRead == 13)	{
 			// 13 == enter key
 			Serial3.print("\n\r");
-		} else if (byteread==8) {
+		} else if (byteRead==8) {
 			// 8 == backspace key
 			Serial3.print("\b \b");
 		} else {
-			Serial3.print((char)byteread);
+			Serial3.print((char)byteRead);
 		}
 	}
 }
@@ -107,15 +147,15 @@ void sender()	{
 //
 //	while (true)	{
 //		while (Serial.available() == 0)	{ }
-//		int byteread = Serial.read();
-//		if (byteread == 13)	{
+//		int byteRead = Serial.read();
+//		if (byteRead == 13)	{
 //			// 13 == enter key
 //			Serial.print("\n\r");
-//		} else if (byteread==8) {
+//		} else if (byteRead==8) {
 //			// 8 == backspace key
 //			Serial.print("\b \b");
 //		} else {
-//			Serial3.print((char)byteread);
+//			Serial3.print((char)byteRead);
 //		}
 //	}
 //}
