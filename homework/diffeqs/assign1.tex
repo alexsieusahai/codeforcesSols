@@ -1,0 +1,191 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\author{Alexander Sieusahai; 1495197}
+\date{Due Sept.27/17}
+\title{Assignment 1 Solutions}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Question 1;} For each of the three given functions decide whether it is a solution of the respective ODE: \\
+
+\tab i)
+
+\[ y_1(x) = e^x, y'_1(x) = e^x \rightarrow e^x \neq e^x+e^x \]
+Therefore $y_1(x)$ is not a solution of the DE.\\
+
+\[y_2(x)=xe^x, y'_2=x+xe^x \rightarrow e^x+xe^x = xe^x+e^x \]
+Therefore $y_2(x)$ is a solution to the DE.\\
+
+\[y_3(x)=x, y'_3(x)=1 \rightarrow 1 \neq x+e^x \]
+Therefore $y_3(x)$ is not a solution to the DE.\\
+\\
+\tab ii) 
+\[ y_1(x)=-\frac{x^2}{4}, y'_1(x) = -\frac{x}{2} \rightarrow  \frac{x^2}{4}+x(-\frac{x}{2})+\frac{1}{4}x^2 = \frac{x^2}{2} - \frac{x^2}{2} = 0 \]
+Therefore $y_1(x)$ is a solution to the DE.\\
+
+\[y_2(x)=x+1, y'_2(x) = 1 \rightarrow 1 + x(x+1) -(x+1) \neq 0 \]
+Therefore $y_2(x)$ is not a solution to the DE.\\
+
+\[y_3(x)=x^2+1, y'_3(x)=2x \rightarrow 4x^2+2x^2-(x^2+1) \neq 0 \]
+Therefore $y_3(x)$ is not a solution to the DE.\\
+
+\tab iii)
+
+\[y_1(x)=x \rightarrow y''(x) DNE \]
+Therefore, $y_1(x)$ is not a solution to the DE.
+
+\[y_2(x)=x^2, y'_2(x) = 2x, y''_2(x) = 2 \rightarrow (1-x^2)(2) - (x^2)(2x) + 2 =2-2x^2-2x^2+2 = 4-4x^2 \neq 0 \]
+Therefore, $y_2(x)$ is not a solution to the DE.
+
+$
+y_3(x) = (1-x^2)^{1/2}, y'_3(x) = x(1-x^2)^{-1/2}, y''_3(x) = -(1-x^2)^{-3/2} \rightarrow \\
+(1-x^2)(-1)(1-x^2)^{-3/2} + x(x)(1-x^2)^{-1/2} + (1-x^2)^{1/2}  \\
+= -(1-x^2)^{-1/2} + x^2{1-x^2)^{-1/2} + (1-x^2)^{1/2} = -(1-x^2)(1-x^2)^{-1/2}+(1-x^2)^{1/2} = 0 
+$
+Therefore, $y_3(x)$ is a solution to the DE.\\
+
+
+\textbf{Question 2;} Solve the IVP for y=y(x),
+\[ y'=6y-3y^2, y(1)=1, \]
+and determine $lim_{x\to\infty} y(x)$. Re-do your calculation with $y(2) = 3$ instead of $y(1) = 1$. \\
+\\
+$
+\frac{dy}{dx} = 6y-3y^2 \rightarrow \frac{dy}{6y-3y^2} = dx \\
+\text{Using partial fraction decomposition:} \\
+\frac{1}{6y-3y^2} = \frac{A(2-y)}{(3y)(2-y)} + \frac{B(3y)}{(3y)(2-y)} \\
+\text{Let A = 1/2 and B = 1/6.} \\
+\frac{1}{6y-3y^2} = \frac{1}{6y} - \frac{1}{6(2-y)} \\
+\text{It then follows that:} \\
+\int \frac{1}{6y-3y^2} = \int \frac{1}{6y} - \int \frac{1}{6(2-y)} \\
+= \frac{ln|y|}{6} - \frac{ln|2-y|}{6}+C \\
+\therefore \int \frac{dy}{6y-3y^2} = \frac{ln|y|}{6} - \frac{ln|2-y|}{6} + C = x \\
+\\
+\text{Rearranging for y=f(x) format below:} \\
+x-c= (1/6) (ln|y|-ln|2-y|) \\
+6(x+c)=ln|\frac{y}{2-y}| \\
+e^{6(x+c)} = \frac{y}{2-y} \\
+2e^{6(x+c)}-ye^{6(x+c)} = y \\
+\frac{2e^{6x+6c}}{1+e^{6x+6c}} = y \\
+\\ \text{Using the initial values} (x,y) = (1,1), \\
+1 = \frac{2e^{6-c}}{1+e^{6-c}} \\
+2e^{6-6c} = 1 + e^{6-6c} \\
+e^{6-6c} = 1 \\
+6-6c = 0 \\
+c = 1 \\
+\therefore \text{The function when } y(1) = 1 \text{ is,}
+\\
+y = \frac{2e^{6x-6}}{1+e^{6x-6}} \\
+\\
+\text{Using the initial conditions } (x,y) = (2,3)
+\\
+\frac{2e^{12-6c}}{1+e^{12-6c}}=3 \\
+2e^{12-6c} = 3+3e^{12-6c} \\
+-e^{12-6c} = 3 \\
+\\
+\text{The above equation has no real solution for c}.
+$
+
+\\
+\textbf{Question 3;} Find the general solution of $y' - \frac{2xy}{x^2+1} = 1.$\\
+\\
+Begin by multiplying $\mu$ on both sides.
+\[\mu y' - \frac{2xy}{x^2+1}\mu = \mu \]
+Notice $(\mu y)' = y'\mu + \mu'y. Then:
+\[\mu y' -\frac{2xy\mu}{x^2+1} = \mu y' + y \mu' \]
+\[ \rightarrow -\frac{2xy\mu}{x^2+1} = y\mu' \]
+\[ \rightarrow \int \frac{d\mu}{\mu} = -\int \frac{2x}{x^2+1} \]
+Let $a = x^2 + 1; da = 2x$. Then
+\[ ln(\mu) = -\int \frac{da}{a} \]
+\[ \rightarrow ln(\mu) = ln(a^{-1}) \]
+\[ \rightarrow \mu = \frac{1}{x^2+1} \]
+It follows that:
+\[ \int (\mu y)' = \int(x^2+1)^{-1} \]
+Thus:
+\[ y = (x^2+1)(\arctan(x)+c) \]
+
+
+\\
+\textbf{Question 4;} Determine the most general function $N = N(x,y)$ such that the equation
+\[(ye^{xy}-4x^3y+2)dx + N(x,y)dy = 0 \]
+is exact.\\
+\\
+Using \textbf{Theorem 2.16}:\\
+Suppose N(x,y) is twice continuously differentiable in $\omega \subset \R^2$. Suppose the equation above is exact. It then follows that:
+\[ \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x} \]
+\[ e^{xy}+xye^{xy}-4x^3 = \frac{\partial N}{\partial x} \]
+Treating $y$ as a constant and taking the integral of $x$ on both sides leads to:
+\[ \int e^{xy} +\int yxe^{xy} - \int 4x^3 = N(x,y) \]
+The first integral and third integral are trivial to solve. The third integral requires technique. I will choose to use integration by parts.\\
+Let $u = yx, du = y, dv=e^{yx}, v = \frac{e^{xy}}{y}. It follows that: 
+\[\int yxe^{xy} = xe^{xy}-\int \frac{e^{xy}}{y}*y = xe^{xy}- \frac{e^{xy}}{y} \]
+Combining all integrals to form N(x,y):
+\[\frac{e^{xy}}{y}+xe^{xy}-\frac{e^{xy}}{y}-x^4 = N(x,y) \rightarrow xe^{xy}-x^4 = N(x,y) \]
+Therefore, $N(x,y) =xe^{xy}-x^4$. \\
+
+
+\\
+\textbf{Question 5;} Solve the IVP $(2y-x)y'+2x = y$ using the initial conditions $y(1) = 3$. \\
+\\
+Rearranging the equation:
+\[ (2y-x)y' + 2x = y \rightarrow (2y-x)dy + (2x-y)dx \]
+Let $M(x,y)=2x-y$, and let $N(x,y)=2y-x$. It follows that:
+\[\frac{\partial N}{\partial x} = -1 = \frac{\partial M}{\partial y} \]
+The equation is exact. By \textbf{theorem 2.16}, there exists a function $F$ such that:
+\[ \frac{\partial F}{\partial y} = N = 2y-x \rightarrow F = y^2-xy+g(x) \]
+It follows that:
+\[ \frac{\partial F}{\partial x} = M = 2x-y = \frac{\partial y^2-xy+g(x)}{\partial x} = -y+g'(x) \]
+Then:
+\[2x-y = -y + g'(x) \rightarrow 2x = g'(x) \rightarrow g(x) = x^2+k  \]
+Substituting $g(x)$ into F:
+\[F=y^2-xy+x^2+k\]
+Therefore, the solution to the DE in implicit form is:
+\[y^2-xy+x^2=c\]
+Using the initial conditions $(x,y) = (1,3)$:
+\[3^2-3(1)+1^2 = 7 = c \]
+Therefore, the solution to the IVP is:
+\[y^2-xy+x^2=7\]
+
+
+\textbf{Question 6;} Demonstrate first that the ODE $e^x(x+1)+(ye^6-xe^x)y' = 0$ is \textit{not} exact. Then show that $\mu(x,y)=e^{-y}$ is an integrating factor, i.e., multiplication by $\mu$ makes the ODE exact. Use this to find the general solution. \\
+\\
+Rearranging the equation:
+\[e^x(x+1)+(-ye^y+xe^x)y' = 0 \rightarrow e^x(x+1)dx+(ye^y-xe^x)dy = 0\]
+Let $N=ye^y-xe^x$, and $M=e^x(x+1)$. It follows that:
+\[ \frac{\partial M}{\partial y} = 0, \frac{\partial N}{\partial x} =xe^x+e^x \]
+It is obvious that they are not equivalent, so the equation is not exact. However, if the equation is multiplied by $\mu(x,y)=e^{-y}$:
+\[(e^{x-y}(x+1))dx+(y-xe^{x-y})dy=0 \rightarrow \frac{\partial N}{\partial x} = -xe^{x-y}-e^{x-y} = \frac{\partial M}{\partial y} \]
+Since the equation is now exact, it follows that:
+\[ \frac{\partial F}{\partial y} = y-xe^{x-y} \rightarrow F = y^2+xe^{x-y}+g(x)\]
+Note that:
+\[ \frac{\partial F}{\partial x} = xe^{x-y}+e^{x-y}+g'(x)=e^{x-y}(x+1)\]
+It then follows that:
+\[ g'(x) = 0 \rightarrow g(x) = c \]
+It follows that:
+\[F=\frac{y^2}{2}+xe^{x-y}+c\]
+Then, the general solution is:
+\[\frac{y^2}{2}+xe^{x-y}=c_1\]
+
+
+\textbf{Question 7;} Find the general solution of $2xydx+(y^2-3x^2)dy=0$.\\
+\\
+Begin by multiplying the equation by the integrating factor $\mu$:
+\[ \mu 2xydx+ \mu(y^2-3x^2)dy=0 \]
+Assume that $\frac{\partial \mu (2xy)}{\partial x} = \frac{\partial \mu (-3x^2)}{\partial y}. Then:
+\[\frac{\partial \mu}{\partial y}(2xy) + \mu(2x) = \frac{\partial \mu}{\partial x}(y^2-3x^2)+\mu(-6x)\]
+\[\frac{\partial \mu}{\partial y}(2xy)-\frac{\partial \mu}{\partial x}(y^2-3x^2)=\mu(-8x)\]
+Assume $\mu$ is a function of $y$ only.
+\[ \frac{d\mu}{dy}=\mu(-8x) \rightarrow \frac{d\mu}{\mu} = \frac{-4dy}{y} \rightarrow ln(\mu) = -4ln(y) \rightarrow \mu = y^{-4} \]
+Since the equation is now exact, it then follows that:
+\[ \frac{\partial F}{\partial y} = y^{-2}-3x^2y^{-4} \rightarrow F = -y^{-1}+x^2y^{-3}+g(x) \]
+It then follows that:
+\[ \frac{\partial F}{\partial x} = 2xy^{-3} +g'(x) = 2xy^{-3} \rightarrow g(x) = c\]
+Therefore, the general solution to the DE is:
+\[-y^{-1}+x^2y^{-3}=c \]
+
+\end{document}
+

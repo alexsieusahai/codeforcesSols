@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{SIunits}
+\usepackage{tikz}
+
+\title{Problem Set 1 Solutions}
+\date{Due on September 26th, 2017}
+\author{Alexander Sieusahai; 1495197}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Question 1:} How much energy is given to an electron as it flows through a 6V battery from the positive to the negative terminal? \\
+\\
+This will be solved with unit analysis. Since 1 \volt is the potential difference between two points on a conducting wire, a test charge moving in the positive direction (as stated in question) will gain 1 \volt. It follows that:
+
+\[ \frac{6\joule}{\coulomb} \cdot \frac{1\coulomb}{(6.242\cdot10^{18}e)} = 9.612\cdot10^{-19}\joule \]
+
+
+
+\textbf{Question 2:} Suppose you have a 2000mAh (milliamp-hour) capacity rechargeable batter which is completely discharged. \\
+
+\tab a) If the battery provides a constant voltage of 3.8\volt, what is the capacity of the battery in Watt-hours?\\
+\\
+Again, by unit analysis: 
+\[ 2Ah \cdot \frac{3.8\joule}{\coulomb} \cdot \frac{\coulomb}{As} = \frac{7.6\joule h}{s} = 7.6Wh \]
+
+\tab b) How long will it take to charge the battery to full chrage using a PC USB port which delivers 500 mA charge current? Assume 100\% efficiency in charging. \\
+\\
+Using unit analysis:
+\[2Ah \cdot \frac{1}{0.5A} = 4h \]
+Therefore it takes 4 hours to charge the battery.
+\\
+
+
+\tab c) How long will it take to charge the battery to full chrage using a wall charger capable 2 A charge current? Assume 100\% efficiency in charging. \\
+\\
+Using unit analysis:
+\[2Ah \cdot \frac{1}{2A} = 1h \]
+Therefore it takes 1 hour to charge the battery.
+\\
+
+
+\tab d) How much charge expressed in Coulombs does the battery contain when fully charged?\\
+\\
+Using unit analysis:
+\[2Ah \cdot \frac{3600s}{h} \cdot \frac{\coulomb}{As} = 7200\coulomb \]
+
+
+\textbf{Question 3:} The charge flowing into the box is shown in the graph in Figure 1. Sketch the current i(t) and power absorbed by the box on the interval [0,10] ms.\\
+\\
+Look to see graph attached to the back of this document.\\
+
+
+\textbf{Question 4:} Find the power that is absorbed or supplied by the circuit elements in Figure 2.\\
+\\
+\tab a) \\
+The independent current source supplies 40W of power.\\
+Circuit element 1 absorbs 12W of power.\\
+The independent voltage source absorbs 28W of power.\\
+\\
+\tab b) \\
+The independent current source supplies 64W of power.\\
+Circuit source 1 absorbs 32W of power.\\
+The dependent voltage source absorbs 32W of power.\\
+
+
+\textbf{Question 5:} Find \textit{V\textsubscript{x}} in the network in Figure 3 using Tellegen's theorem.\\
+\\
+Since all elements are in series, they share the same current. So, the sum of the voltages when considering if they are supplying or absorbing power follows.\\
+Going from left to right:
+\[6+12-24+V_x+16-18=0 \rightarrow V_x = 0 \]
+\\
+\textbf{Question 6:} Find $I_x,I_y,$ and $I_z$ in the network shown in Figure 4.
+\\
+Using the bottom center node and KCL:
+\[ -2 + 4 + I_z = 0 \rightarrow I_z = -2mA \]
+Using the top center node and KCL:
+\[12-3-I_x = 0 \rightarrow I_x = 9mA \]
+Using the left center node and KCL:
+\[ -I_z - I_y - 12 = 0 \rightarrow 2-I_y-12=0 \rightarrow I_y=-10mA \]
+\\
+\textbf{Question 7:} Find $V_{ab}$ in the network.
+\\
+Using KVL:
+\[ -15 +15i = 0 \rightarrow i = 1A \]
+The calculation for $V_{ab}$ follows:
+\[ -15+11i = V_{ab} \rightarrow -15+11=-4=V_{ab} \]
+\\
+\textbf{Question 8:} Find the power suppiled by each source in the circuit.
+\\
+Since current distributes proportionally to all resistors and all are in parallel, the circuit can be reduced to one resistor of resistance:
+\[ R_{eq} = \frac{1}{1+1/2+1/5} \rightarrow \frac{10}{17}\Ohm = R_{eq} \]
+Using KCL at any remaining node results in 2A of current flowing through the resistor. It follows that:
+\[ V_{resistor} = iR = 2(\frac{10}{17}) = \frac{20}{17} \]
+Due to KVL, the voltage at the simplified source is:
+\[ V_s = -\frac{20}{17} \]
+Since voltage is constant between the two current sources:
+\[ P_{4mA} = (V_s)(0.004) = 4.704mW \]
+\[ P_{2mA} = (-V_s)(0.002) =-2.352mW \]
+Since the 4mA source would have to be powering the circuit, and the resistor is taking energy:
+The 4mA source delivers 4.704mW to the circuit, and the 2mA source takes 2.352mW of power from the circuit. 
+
+\end{document}

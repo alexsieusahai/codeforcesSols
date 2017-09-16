@@ -1,0 +1,22 @@
+\documentclass{article}
+
+\author{Alexander Sieusahai; 1495197}
+\date{Due on Friday, September 22nd, 2017}
+\title{Assignment 1 Solutions}
+
+\begin{document}
+
+\textbf{Question 1b} Find and sketch the domain of:
+\[ f(x,y) = \sqrt{sin[\pi(x^2+y^2)]} + ln(2-|x|) \]
+Let $g(x,y)=\sqrt{sin[\pi(x^2+y^2)]}$ and let $h(x,y)=ln(2-|x|)$.
+The domain of $g(x,y)$ is as follows:
+\[ sin(\pi(x^2+y^2)) \geq 0 \]
+\[ 2\pi m \leq \pi(x^2+y^2) \leq 2\pi m + 1, m \in \mathbb{Z} \]
+\[ 2m \leq x^2+y^2 \leq 2m+1, m \in \mathbb{Z} \]
+By choosing a variety of m, a family of circles appear. This is also obvious from the resulting equation. I thought of it as an infinite circle with holes cut out from every interval from $[2m+1,2m+2]$, hence the way that I drew the accompanying graph for $g(x,y)$. The domain of $h(x,y)$ is as follows:
+\[ 2-|x| > 0 \rightarrow -2 < x < 2 \]
+The graph for this domain is obvious. Since $f(x,y) = g(x,y) + h(x,y)$, the domain of $f(x,y)$ is the union of the domains of $g(x,y)$ and $h(x,y)$. This results in:
+\[D(f(x,y)) = \{(x,y)|2m \leq x^2+y^2 \leq 2m+1, m \in \mathbb{Z}\} \cap \{(x,y)|-2<x<2\} \]
+See the following attached page for the sketches of the graphs of the domains of $g(x,y), h(x,y)$, and finally $f(x,y)$.
+
+\end{document}
