@@ -1,0 +1,8 @@
+#drinks
+n = int(input())
+mySum = 0
+for num in input().split():
+    num = int(num)
+    mySum += num
+print(round(mySum/(n),4))
+
