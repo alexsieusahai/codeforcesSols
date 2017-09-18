@@ -1,0 +1,13 @@
+inputList = [int(x) for x in input().split()]
+n = inputList[0]
+m = inputList[1]
+
+def socks(n,m):
+	day = 0
+	while n >= m:
+		day += m
+		n -= m
+		n += 1
+	return day + n
+
+print(socks(n,m))

@@ -1,0 +1,19 @@
+
+# cost efficiency of buying special tickets up to the point where you have to choose normal or reg
+
+[n,m,a,b] = [int(x) for x  in input().split()]
+cost = 0 
+if b/m < a:
+	cost += b*(n//m)
+	n -= m*(n//m)
+else:
+	cost += a*n
+	n -= n
+# need to figure out if buying a special to cover the rest of regular is cheaper now
+
+if b < a*n:
+	cost += b
+else:
+	cost += a*n
+
+print(cost)

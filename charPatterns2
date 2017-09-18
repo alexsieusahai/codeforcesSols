@@ -1,0 +1,25 @@
+def charPatterns():
+	t = int(input())
+	lineList = []
+	colList = []
+	for case in range(t):
+		rawStr = input()
+		rawStr = rawStr.split()
+		lineList.append(int(rawStr[0]))
+		colList.append(int(rawStr[1]))
+	i = 0
+	for lineCount in lineList:
+		for line in range(lineCount):
+			for col in range(colList[i]):
+				if col == 0 or col == colList[i]-1:
+					print('*',end='')
+				elif line == 0 or line == lineCount-1:
+					print('*',end='')
+				else:
+					print('.',end='')
+			print()
+		if i != len(lineList)-1:
+			print()
+		i += 1
+
+charPatterns()

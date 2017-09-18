@@ -1,0 +1,17 @@
+n = int(input())
+come = []
+go = []
+for case in range(n):
+	rawStr = [int(x) for x in input().split()]
+	come.append(rawStr[1])
+	go.append(rawStr[0])
+# this way it's on an index by index basis
+tramCount = 0
+bigNum = 0
+for i in range(n):	
+	tramCount += come[i]
+	tramCount -= go[i]
+	if tramCount > bigNum:
+		bigNum = tramCount
+print(bigNum)
+

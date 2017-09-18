@@ -1,0 +1,25 @@
+
+def drawSnake(n,m):
+	hashBool = True
+	for row in range(n):
+		for col in range(m):
+			if row % 2 == 0:
+				print('#', end='')
+			else:
+				if hashBool:
+					hashSpace = m-1
+				else:
+					hashSpace = 0 
+				if col == hashSpace:
+					print('#', end='')
+				else:
+					print('.', end='')
+		print()
+		if row % 2 == 1:
+			if hashBool == True:
+				hashBool = False
+			else:
+				hashBool = True
+
+[n,m] = [int(x) for x in input().split()]
+drawSnake(n,m)

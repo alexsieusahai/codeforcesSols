@@ -1,0 +1,13 @@
+import string
+lowerCount = 0
+upperCount = 0
+word = input()
+for char in word:
+	if char in string.ascii_lowercase:
+		lowerCount += 1
+	else:
+		upperCount += 1
+if upperCount > lowerCount:
+	print(word.upper())
+else:
+	print(word.lower())

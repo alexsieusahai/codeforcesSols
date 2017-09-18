@@ -1,0 +1,69 @@
+
+# sort the list
+# take the difference between the first n+1 numbers, insert into list
+# for the rest of the items in the list, if it's smaller than the greatest, 
+# pop off the last one in the list and insert the smaller number into the list
+# whenever i say insert i mean place it in order
+#
+#
+def mergeSort(alist):
+	if len(alist) > 1:
+		mid = len(alist)//2
+		left = alist[:mid]
+		right = alist[mid:]
+		
+		mergeSort(left)
+		mergeSort(right)
+		
+		i = 0
+		j = 0
+		k = 0
+
+		while i < len(left) and j < len(right):
+			if left[i] < right[j]:
+				alist[k] = left[i]
+				i += 1
+			else:
+				alist[k] = right[j] 
+				j += 1
+		# sort the i and j pieces into their respective pieces
+			k += 1
+		
+		while i < len(left):
+			alist[k] = left[i]
+			i += 1
+			k += 1
+
+		while j < len(right):
+			alist[k] = right[j]
+			j += 1
+			k += 1
+		
+
+
+rawIn = input().split()
+n = int(rawIn[0])
+m = rawIn[1]
+numPieces = [int(x) for x in input().split()]
+mergeSort(numPieces)
+
+def findDifferences(numPieces):
+	diffList = []
+	i = 0
+	while i < len(numPieces):
+		if i > 0:
+			diffList.append(numPieces[i]-numPieces[i-1])
+		i += 1
+	return diffList
+
+diffList = findDifferences(numPieces)
+
+# she wants to choose n puzzles for her children, so you need the smallest n differences then you grab the one that was  on the top of that list
+
+# what I want to do now is take the difference of the 0th and the n-1th, for all up until the end
+smallestDiff = 10001
+for i in range(len(numPieces)-n+1):
+	checkDiff = numPieces[i+n-1] - numPieces[i]
+	if checkDiff < smallestDiff:
+		smallestDiff = checkDiff
+print(smallestDiff)

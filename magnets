@@ -1,0 +1,11 @@
+
+n = int(input())
+groupCount = 1
+num = input()
+numCheck = num
+for case in range(n-1):
+	num = input()
+	if numCheck != num:
+		groupCount += 1
+	numCheck = num
+print(groupCount)

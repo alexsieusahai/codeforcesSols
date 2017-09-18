@@ -1,0 +1,18 @@
+# exception:
+	# when home uniform color of host team matches guest uniform, then host team puts on
+	# their guest uniform aswell
+
+hostColor = []
+guestColor = []
+
+for case in range(int(input())):
+	[host,guest] = [int(x) for x in input().split()]
+	hostColor.append(host)
+	guestColor.append(guest)
+times = 0
+for host in hostColor:
+	for guest in guestColor:
+		if host == guest:
+			times += 1
+print(times)
+		

@@ -1,0 +1,17 @@
+numDict = {}
+for i in range(3):
+	numDict[i] = 0
+for case in range(int(input())):
+	i = 0
+	for num in [int(x) for x in input().split()]:
+		numDict[i] += num
+		i += 1
+tf = True
+for dim in range(3):
+	if numDict[dim] != 0:
+		tf = False
+if tf == True:
+	print('YES')
+else:
+	print('NO')
+

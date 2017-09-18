@@ -1,0 +1,9 @@
+def winDetermine(n,m):
+	# missed a part of the problem spec
+	if min(n,m) % 2 == 0:
+		return 'Malvika'
+	return 'Akshat'
+
+inputList = [int(x) for x in input().split()]
+print(winDetermine(inputList[0],inputList[1]))
+
