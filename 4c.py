@@ -1,20 +1,18 @@
-names = []
-for i in range(int(input())):
-    name = list(input())
-    originallyIn = False
-    a = 1
-    if inList(''.join(name),names):
-        originallyIn = True
-        name.append(a)
-        while inList(str(name),names):
-            a += 1
-            name[-1] = a
-    names.append(''.join(name))
-    if originallyIn:
-        print(''.join(name))
-    else:
-        print(name)
+# use dictionary as hashing table
 
-def inList(name,names):
+nameDict = {}
+for i in range(int(input())):
+    name = input()
+    printName = False
+    if name in nameDict:
+        printName = True
+        nameDict[name] += 1
+    else:
+        nameDict[name] = 0
+    if printName:
+        print(name+str(nameDict[name]))
+    else:
+        print('OK')
+
 
 
