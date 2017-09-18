@@ -1,9 +1,0 @@
-
-def soldiersAndBananas(k,n,w):
-	a = w*(w+1)*(1/2)*k - n
-	if a > 0:
-		return int(a)
-	return 0
-
-dataList = [int(x) for x in input().split()]
-print(soldiersAndBananas(dataList[0], dataList[1], dataList[2]))

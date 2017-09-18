@@ -1,8 +1,0 @@
-mn = [int(n) for n in input().split()]
-m = mn[0]
-n = mn[1]
-import math 
-num= n*math.floor(m/2)
-if m % 2 == 1:
-	num += math.floor(n/2)
-print(num)

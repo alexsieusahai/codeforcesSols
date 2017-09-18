@@ -1,9 +1,0 @@
-
-shoeList = []
-need = 0
-for shoe in input().split():
-	if shoe not in shoeList:
-		shoeList.append(shoe)
-	else:
-		need += 1
-print(need)

@@ -1,7 +1,0 @@
-def capitalize(myStr):
-	myList = list(myStr)
-	myList[0] = myList[0].upper()
-	myStr = ''.join(myList)
-	return myStr
-
-print(capitalize(input()))
