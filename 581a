@@ -1,0 +1,16 @@
+# brute force is fine since number is low
+
+[red,blue] = [int(x) for x in input().split()]
+fashion = 0
+reg = 0
+while red > 0 and blue > 0:
+    fashion += 1
+    red -= 1
+    blue -= 1
+while red > 1:
+    red -= 2
+    reg += 1
+while blue > 1:
+    blue -= 2
+    reg += 1
+print(str(fashion)+' '+str(reg))
