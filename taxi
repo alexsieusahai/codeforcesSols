@@ -1,0 +1,33 @@
+n = int(input())
+taxiCount = 0
+groupDict = {}
+for i in range(1,4):
+	groupDict[i] = 0
+for group in input().split():
+	if group == '4':
+		taxiCount += 1
+	else:
+		groupDict[int(group)] += 1
+# now I only have the less than 4 left to sort through
+i = 3
+while i > 0:
+	total = 4
+	if groupDict[i] > 0:
+		groupDict[i] -= 1
+		total -= i
+		taxiCount += 1
+	else:
+		i -= 1 # if this occurs I have to restart loop
+		continue
+	if i == 0:
+		break
+	a = 4 - i
+	while a > 0:
+		while total > 0:
+			if groupDict[a] > 0 and total >= a:
+				groupDict[a] -= 1
+				total -= a
+			else:
+				break
+		a -= 1
+print(taxiCount)	

@@ -1,0 +1,10 @@
+
+# include stdout
+# include iostream
+
+int main()
+{
+	cout << "Hello World!\n";
+	return 0;
+}
+

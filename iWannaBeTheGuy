@@ -1,0 +1,22 @@
+
+def iWannaBe(n,xList,yList):
+	levelDict = {}
+	for level in range(1,n+1):
+		levelDict[level] = 0
+	for levelBeat in xList:
+		levelDict[levelBeat] = 1
+	for levelBeat in yList:
+		levelDict[levelBeat] = 1
+	winCond = True
+	for level in range(1,n+1):
+		if levelDict[level] == 0:
+			winCond = False
+	print(levelDict)
+	if winCond == True:
+		return 'I become the guy.'
+	return 'Oh, my keyboard!'
+
+n = int(input())
+xList = [int(x) for x in input().split()]
+yList = [int(y) for y in input().split()]
+print(iWannaBe(n,xList,yList))

@@ -1,0 +1,16 @@
+# problem30
+# digitFifthPowers
+
+def main():
+	checker = 0
+	for i in range(2,1000000):
+		astr = str(i)
+		mySum = 0
+		for a in range(0,len(astr)):
+			mySum += int(astr[a])**5
+		if mySum == i:
+			print(i)
+			checker += i
+	print(checker)
+
+main()

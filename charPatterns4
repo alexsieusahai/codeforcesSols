@@ -1,0 +1,32 @@
+def charPatterns():
+	# have to build data from input
+	t = int(input())
+	lineList = []
+	colList = []
+	heightList = []
+	widthList = []
+	for case in range(t):
+		rawStr = input()
+		rawStr = rawStr.split()
+		lineList.append(int(rawStr[0]))
+		colList.append(int(rawStr[1]))
+		heightList.append(int(rawStr[2]))
+		widthList.append(int(rawStr[3]))
+	
+	# now all the data is stored properly, I think
+	# how do I solve this problem?
+	i = 0
+	for lineCount in lineList:
+		for line in range(1+(1+heightList[i])*lineList[i]):
+			for col in range(1+colList[i]*(widthList[i]+1)):
+				if line == 0 or line%(heightList[i]+1)==0:
+					print('*',end='')
+				elif col % (widthList[i]+1) == 0:
+					print('*',end='')
+				else:
+					print('.',end='')
+			print()
+		if i != len(lineList):
+			print()	
+		i += 1
+charPatterns()

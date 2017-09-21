@@ -1,0 +1,7 @@
+import string
+i = 0
+letDict = {}
+for let in string.ascii_uppercase:
+	letDict[let] = i
+	i += 1
+print(letDict)

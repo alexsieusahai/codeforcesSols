@@ -1,0 +1,12 @@
+
+letList = []
+notLetters = ['{', '}', ' ', ',']
+a = 0
+for let in input():
+	if let in letList:
+		continue
+	else:
+		letList.append(let)
+		if let not in notLetters:
+			a += 1
+print(a)

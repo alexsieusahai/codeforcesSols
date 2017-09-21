@@ -1,0 +1,17 @@
+
+n = int(input())
+moneyList = [int(a) for a in input().split()]
+x = 0
+cost0 = 0
+cost1 = 0
+bigNum = 0
+for i in moneyList:
+	cost1 = i
+	if cost1 >= cost0:
+		x += 1
+	else:
+		x = 1
+	if x > bigNum:
+		bigNum = x
+	cost0 = i
+print(bigNum)

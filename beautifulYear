@@ -1,0 +1,13 @@
+
+i = int(input())
+
+def beautifulYear(i):
+	charList = []
+	for char in str(i):
+		if char in charList:
+			return beautifulYear(i+1)
+		charList.append(char)
+	return i
+
+print(beautifulYear(i+1))
+

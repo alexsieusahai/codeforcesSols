@@ -1,0 +1,19 @@
+# simple selSort
+
+def selSort(myList):	
+	j = len(myList)
+	while j > 1: 
+		bigNum = 0 
+		bigNumDex = 0
+		for num in range(j):
+			if myList[num] > bigNum:
+				bigNum = myList[num]
+				bigNumDex = num
+		temp = myList[num] # since it'll be on the last one
+		myList[num] = bigNum
+		myList[bigNumDex] = temp
+		j -= 1
+n = input()
+inputList = [int(x) for x in input().split()]
+selSort(inputList)
+print(' '.join([str(x) for x in inputList]))

@@ -1,0 +1,12 @@
+n = input()
+n = int(n)
+num = 0
+for case in (range(n)):
+	t = 0
+	for a in [int(x) for x in input().split()]:
+		if a == 1:
+			t += 1
+	if t > 1:
+		num += 1
+
+print (num)

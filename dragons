@@ -1,0 +1,48 @@
+
+[s,n] = [int(x) for x in input().split()]
+drags = []
+dragPwrUp = []
+for case in range(n):
+	inputList = [int(x) for x in input().split()]
+	drags.append(inputList[0])
+	dragPwrUp.append(inputList[1])
+	# remember when I sort later I need to exchange both indicies and keep it consistent
+	# can use dictionaries but better to use a more language generalizable solution
+
+# i think selSort is fast enough
+# want to sort from smallest to biggest
+def selSort(alist,keyList):
+	j = len(alist)
+	while j >= 1:
+		bigNum = 0 
+		bigNumDex = 0
+		for i in range(j):
+			if alist[i] > bigNum:
+				bigNum = alist[i]
+				bigNumDex = i
+		temp = alist[j-1]
+		alist[j-1] = bigNum
+		alist[bigNumDex] = temp
+		# now i need to shift the corresponding indicies for the keys 
+		temp = keyList[j-1]
+		keyBig = keyList[bigNumDex]
+		keyList[j-1] = keyBig
+		keyList[bigNumDex] = temp
+		j -= 1
+selSort(drags,dragPwrUp)
+# now to finish it off
+	
+i = 0
+winCond = True
+for drag in drags:
+	if s > drag:
+		s += dragPwrUp[i]
+	else:
+		winCond = False 
+		break
+	i += 1
+
+if winCond == True:
+	print('YES')
+else:
+	print('NO')
