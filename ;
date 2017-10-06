@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int dp(int m, int s, string numSoFar)  { //m is length, s is sum of digits
+    if (s == 0) {
+        if (m == 0) {
+            return numSoFar;
+        } else  {
+            return -1; //bad
+        }
+    } else  {
+        if (m == 0) {
+            return -1; //bad
+        }
+    }
+    int results[10]; 
+    // base cases taken care of, now implement recursive algorithm
+    for (int i = 0; i <= 9; ++i)    {
+        results[i] = dp(m-1, s-i, numSoFar+to_string(i))
+
+
+int main()  {
+    int m,s;
+    cin >> m >> s;
+    string baseString = "0";
+    cout << stoi(baseString);
+    cout << dp(m,s,baseString);
+    return 0;
+}
