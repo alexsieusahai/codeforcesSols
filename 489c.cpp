@@ -4,6 +4,8 @@
 using namespace std;
 // problem! exceeds memory limit because of memotable
 // what to do?
+// try greedy solution; look to 489cGreedy.cpp
+
 
 // memo table initalized here
 int memo[1000][100][900];
