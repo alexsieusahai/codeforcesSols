@@ -3,8 +3,8 @@
 using namespace std;
 
 int main()	{
-	int occurance[100000];
-	int maxSols[100000];
+	long long int occurance[100001];
+	long long int maxSols[100001];
 	int n;
 	cin >> n;
 	int temp;
@@ -14,13 +14,9 @@ int main()	{
 	}
 	maxSols[0] = 0;
 	maxSols[1] = occurance[1];
-	int bigNum = 0;
-	for (int i=2;i<100000;++i)	{
+	for (int i=2;i<100001;++i)	{
 		maxSols[i] = max(maxSols[i-1],maxSols[i-2]+occurance[i]*i);
-		if (maxSols[i] > bigNum)	{
-			bigNum = maxSols[i];
-		}
 	}
-	cout << bigNum;
+	cout << maxSols[100000];
 	return 0;
 }
