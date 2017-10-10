@@ -8,7 +8,7 @@ int main()	{
 	cin >> n;
 	int karenNum[n];
 	int koyomiNum[n];
-	bool inList[1000000];
+	bool inList[4000007]; // it was a memory error... needed at least 2*21+1 spots, that's where i was running into an error
 	for (int i = 0; i < n; ++i)	{
 		cin >> karenNum[i];
 		inList[karenNum[i]] = true;
