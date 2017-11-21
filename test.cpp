@@ -4,9 +4,8 @@
 using namespace std;
 
 int main()  {
-    int n;
-    int m;
-    cin >> n >> m;
-    cout << n << '\n' << m << '\n';
+    int ans = 8;
+    ans = ((ans << 28) >> 31)&1;
+    cout << ans;
     return 0;
 }

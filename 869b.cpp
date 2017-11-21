@@ -21,10 +21,12 @@ int main()	{
 	int bigNum = 1;
 	while (diff > 0)	{
 		bigNum *= b;
+        cout << "multiplied bigNum by " << b << '\n';
 		b--;
 		diff--;
 		string toConvert = to_string(bigNum);
 		toConvert = toConvert.substr(toConvert.length()-1,toConvert.length());
+        cout << toConvert << endl;
 		bigNum = stoi(toConvert);
 	}
 	cout << bigNum;
